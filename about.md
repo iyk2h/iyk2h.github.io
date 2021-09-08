@@ -1,16 +1,8 @@
 ---
 layout: page
-title: About
+title: About Me
 ---
 
-<p class="message">
-  Hey there! This page is included as an example. Feel free to customize it for your own use upon downloading. Carry on!
-</p>
 
-There are currently two themes built on Poole:
+개발에 재미를 느끼고 꾸준하게 성장하는 개발자
 
-## Connect
-
-[GitHub](https://github.com/iyk2h)
-
-Thanks for reading!
