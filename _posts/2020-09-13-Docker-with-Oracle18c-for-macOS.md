@@ -30,3 +30,4 @@ SQL> grant connect, resource, dba to test;
 
 
 
+sql developer 로 연결을 하려고 했으나, username 과 password 인식이 안되서 어떻게 해야하나 고민중..
