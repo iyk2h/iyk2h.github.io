@@ -8,7 +8,7 @@ terminal 에서 도커 로그인
 
 
 
-[github](https://hub.docker.com/_/oracle-database-enterprise-edition)
+[dockerhub](https://hub.docker.com/_/oracle-database-enterprise-edition)
 
 위 링크에서 
 
