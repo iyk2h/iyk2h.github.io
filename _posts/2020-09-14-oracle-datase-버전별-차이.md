@@ -1,0 +1,2 @@
+[DB Oracle 버전별-특징](https://velog.io/@sezzzini/DB-Oracle-%EB%B2%84%EC%A0%84%EB%B3%84-%ED%8A%B9%EC%A7%95)
+
