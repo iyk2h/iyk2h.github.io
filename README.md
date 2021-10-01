@@ -1,4 +1,4 @@
-# IYK2H Today I Learn
+# git IYK2H Today I Learn
 
 ###  TIL 규칙
 
