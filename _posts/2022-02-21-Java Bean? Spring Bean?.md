@@ -10,7 +10,7 @@
 
 데이터를 표현하는 것을 목적으로 하는 자바 클래스( JavaBean 규격서에 따라 작성 )
 
-컴포넌트와 비슷한 의미로도 사용
+컴포넌트와 비슷한 의미로도 사용한다.
 
 
 
@@ -20,7 +20,7 @@ DTO 혹은 VO의 형태가 Java Bean이라고 생각하면 쉽다.
 
 Java Bean 필드는 private로 구성되어 getter와 setter를 통해서만 접근할 수 있고, 전달 인자가 없는 생성자를 가지는 형태의 클래스이다.
 
-모든 필드는 private로 getter/setter를 통해서만 접근 가능
+모든 필드는 private로 getter/setter를 통해서만 접근 가능하다.
 
 ```java
 public class Bean_ClassName [ implements java.io.Serializable ] {
