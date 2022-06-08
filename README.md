@@ -1,4 +1,8 @@
-# git IYK2H Today I Learn
+# [Today I Learn ](https://iyk2h.tistory.com)
+
+#### TIL로 작성된 글은 위 블로그로 업로드 하고 있습니다.
+
+
 
 ###  TIL 규칙
 
