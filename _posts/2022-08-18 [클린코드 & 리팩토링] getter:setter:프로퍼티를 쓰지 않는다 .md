@@ -8,9 +8,11 @@ Entity에서 getter/setter 사용을 지양해 상태 노출을 최소화
 
 또한, getter/setter를 사용하게 되면 Open/Closed 원칙을 위반하게 된다.
 
-```java
-public class Product {
+getter는 객체의 상태 값을 가져오기 위해 꼭 필요하다면 getter는 사용해도 된다.
 
+```java
+// 잘못된 예
+public class Product {
     private final Name name;
     private final Count count;
 
@@ -31,8 +33,8 @@ product.setCount(product.getCount() - 1);
 ```
 
 ```java
+// 좋은 예
 public class Product {
-
     private final Name name;
     private final Count count;
 
@@ -42,7 +44,7 @@ public class Product {
     }
 
     public void minusOneProduct() {
-        return count - 1;
+        this.count - 1;
     }
 }
 // 수량 - 1
