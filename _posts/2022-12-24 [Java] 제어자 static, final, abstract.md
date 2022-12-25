@@ -1,3 +1,11 @@
+클래스와 멤버의 modifiers는 다음과 같은 순서로 작성하는 것이 권장된다.
+
+```
+public protected private abstract default static final transient volatile synchronized native strictfp
+```
+
+
+
 ## 제어자(modifier)
 
 - 클래스와 클래스의 멤버(멤버 변수, 메서드)에 부가적인 의미 부여
