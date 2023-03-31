@@ -180,9 +180,24 @@ Operand Stack : 스텍
 
 #### 힙(Heap Area)
 
-**인스턴스 또는 객체(Object)**(클래스 타입이 선언된 것), **배열**을 저장하는 공간으로 **가비지 컬렉션의 대상**이다. **JVM 성능** 등의 이슈에서 가장 많이 언급되는 공간이다.  
-메모리를 여러 스레드에서 공유하기 때문에 데이터가 **스레드로부터 안전하지 않다**.  
+**인스턴스 또는 객체(Object)**(클래스 타입이 선언된 것), **배열**을 저장하는 공간으로 **가비지 컬렉션의 대상**이다. **JVM 성능** 등의 이슈에서 가장 많이 언급되는 공간이다. 
+메모리를 여러 스레드에서 공유하기 때문에 데이터가 **스레드로부터 안전하지 않다**. 
 힙 구성 방식이나 가비지 컬렉션 방법 등은 JVM 벤더의 재량이다.
+
+![image-20230329141401103](../images/image-20230329141401103.png)
+
+*Permanent는 Java 8 버전부터 Native Method Stack으로 이동해 존재하지 않음. Java 7 버전까지 Heap Area에 Permanent 존재
+
+Heap 영역은 물리적으로 두 영역으로 구분할 수 있다.
+
+- Young Generation : 생명 주기가 짧은 객체를 GC 대상으로 하는 영역
+- Old Generation : 생명 주기가 긴 객체를 GC 대상으로 하는 영역
+
+> JVM은 Java Heap에 Memory를 할당하는 Instruction(Bytecode로 new, newarray, anewarray, multianewarray)만 존재하고 메모리 해제를 위한 어떤 Java Code나 Bytecode도 존재하지 않습니다. Java Heap의 메모리 해제는 오로지 Garbage Collection을 통해서만 수행됩니다. JVM 스펙(Specification)은 이러한 원칙을 강하게 제시하고 있고 그 구현을 담당한 JVM 벤더들은 최대한 이를 따르고 있습니다. 그러나 이것은 원칙일 뿐 어떻게 구현하는지에 대해서는 전적으로 벤더들에게 일임하고 있습니다.
+>
+> Garbage Collection 뿐만 아니라 Heap의 전반적인 구성도 특별히 정의된 바 없이 JVM을 구현하는 벤더에게 전권을 위임하고 있습니다. **게다가 Heap은 단순히 Array와 Object를 저장하는 공간에 지나지 않습니다.** 그렇기 때문에 Heap의 동작 원리나 메커니즘에 대한 설명보다는 우리가 실제로 사용하는 Hotspot JVM이나 IBM JVM의 Heap 구조를 통해 전반적인 JVM Heap에 대한 이해를 돕는 것이 의미 있을 것이라 생각합니다.
+
+
 
 #### 메서드 영역(Method Area)
 
