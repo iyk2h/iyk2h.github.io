@@ -5,7 +5,7 @@ JVM은 컴파일의 결과물인 바이트 코드를 실행하기 위한 가상 
 
 ![image-20230328164131605](../images/image-20230328164131605.png)
 
-#### JVM은 크게 4가지로 구분된다.
+#### JVM은 크게 3가지로 구분된다.
 
 -   Class Loader
 -   Runtime Data Area
