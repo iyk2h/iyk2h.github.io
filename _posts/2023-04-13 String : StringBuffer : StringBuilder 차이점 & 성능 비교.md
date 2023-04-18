@@ -4,7 +4,7 @@ String은 immutable(불변) 하다.
 
 String Constant Pool에 있는 값은 변하는 것이 아니라 새로운 값의 주소를 가리키게 된다.
 
-![image-20230418104802630](/Users/youngkyoonim/TIL/iyk2h.github.io/images/image-20230418104802630.png)
+![image-20230418104802630](../images/image-20230418104802630.png)
 
 String 객체의 내부 구성 요소를 보면 다음과 같이 되어 있다.
 
@@ -41,7 +41,7 @@ StringBuffer, StringBuilder는 mutable(가변) 하다.
 
 두 클래스는 내부 Buffer(데이터를 임시로 저장하는 메모리)에 문자열을 저장해두고 그 안에서 추가, 수정, 삭제 작업을 할 수 있도록 설계되어 있다.
 
-![image-20230418113431739](/Users/youngkyoonim/TIL/iyk2h.github.io/images/image-20230418113431739.png)
+![image-20230418113431739](../images/image-20230418113431739.png)
 
 따라서 값이 변경될 때마다 새로운 객체를 만드는 String보다 훨씬 빠르고, 메모리 낭비도 적다.
 
