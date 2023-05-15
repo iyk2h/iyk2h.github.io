@@ -52,28 +52,152 @@ Java 8버전 부터 default 예약어를 통해 일반 메소드구현이 가능
 
 - 다형성
 
-	- 형변환을 통한 교체 용이
+  - 형변환을 통한 교체 용이
 
-	- ```java
-		Crypto crypto = new SHA512Crypto(); // 기존 SHA512 방식
-		String enc = crypto.encrypt("1234");
-		```
+  - ```java
+    Crypto crypto = new SHA512Crypto(); // 기존 SHA512 방식
+    String enc = crypto.encrypt("1234");
+    ```
 
-	- 위 SHA512 방식을 새로운 암호화 방식으로 쉽게 변경가능
+  - 위 SHA512 방식을 새로운 암호화 방식으로 쉽게 변경가능
 
-	- ```java
-		Crypto crypto = new NewSHACrypto(); // 새로운 암호화 방식
-		String enc = crypto.encrypt("1234");
-		```
+  - ```java
+    Crypto crypto = new NewSHACrypto(); // 새로운 암호화 방식
+    String enc = crypto.encrypt("1234");
+    ```
+
+  - 선언(설계)와 구현을 분리시킬 수 있게 한다.
+
+    - ```java
+      class B {
+        public void method() {
+          System.out.println("methodInB");
+        }
+      }
+      ```
+
+    - 분리
+
+    - ```java
+      interface I {
+      	public void method()
+      }
+      
+      class B implements I{
+        public void method() {
+          System.out.println("methodInB");
+        }
+      }
+      ```
+
+    - 인터페이스 덕분에 B가 변경되어도 A는 안바꿀 수 있게 된다.(느슨한 결합)
+
+  - ![image-20221227194825931](../images/image-20221227194825931.png)
+
+  - A는 I사용, B는 구현
+
+  	위 그림과 같이 interface로 중간 역할을 해주면 B가 C로 변경되어도 A는 변경할 필요가 없다. (느슨한 결합)
+
+  	```java
+  	//직접적인 관계의 두 클래스 A-B
+  	class A {
+  	  public void methodA(B b) { //B를 사용
+  	    b.methodB();
+  	  }
+  	}
+  	
+  	class B {
+  	  public void methodB() {
+  	    System.out.println("methodInB()");
+  	  }
+  	}
+  	
+  	class C implements I {
+  	  public void methodB() {
+  	    System.out.println("methodInB() in C class");
+  	  }
+  	}
+  	
+  	//클래스 B -> C 로 변경시 A 코드 변경 필요
+  	
+  	class InterfaceTst {
+  	  public static void main(String args[]) {
+  	    A a = new A();
+  	    a.methodA(new B()); //"methodInB()"출력
+  	  }
+  	}
+  	```
+
+  	```java
+  	//간접적인 관계의 두 클래스 A-I-B
+  	class A {
+  	  public void methodA(I i) { //I를 사용
+  	    i.methodB();
+  	  }
+  	}
+  	
+  	Interface I { void methodB(); }
+  	
+  	class B implements I {
+  	  public void methodB() {
+  	    System.out.println("methodInB()");
+  	  }
+  	}
+  	
+  	class C implements I {
+  	  public void methodB() {
+  	    System.out.println("methodInB() in C class");
+  	  }
+  	}
+  	
+  	//클래스 B -> C 로 변경시 A는 변경 없음
+  	
+  	class InterfaceTst {
+  	  public static void main(String args[]) {
+  	    A a = new A();
+  	    a.methodA(new B()); //"methodInB()"출력
+  	    a.methodA(new C()); //"methodInB() in C class"출력
+  	  }
+  	}
+  	```
 
 - 프로젝트 개발 시 일관되고 정형화된 개발을 위한 표준화가 가능하다.
 
-	- 미리 메소드를 정할 수 있다.
+  - 미리 메소드를 정할 수 있다.
 
 - 다중 상속을 통한 이점을 누릴 수 있다.
 
 - 클래스와 클래스 간의 관계를 인터페이스로 연결하면, 클래스마다 독립적인 프로그래밍이 가능하다.
-	- 개방 폐쇄법칙인 확장에는 열려있고 변경에는 닫혀있게 된다.
+  - 개방 폐쇄법칙인 확장에는 열려있고 변경에는 닫혀있게 된다.
+
+- 서로 관계없는 클래스들을 관계를 맺어줄 수 있다.
+
+	![image-20221227201151545](../images/image-20221227201151545.png)
+
+	SCV, Tank, Dropship 를 수리하는 기능을 만든다고 가정하면
+
+	```java
+	interface Repairable {}
+	
+	class SCV extends GroundUnit implements Repairable {
+	  // ...
+	}
+	class Tank extends GroundUnit implements Repairable {
+	  // ...
+	}
+	class Dropship extends AirUnit implements Repairable {
+	  // ...
+	}
+	
+	void repair(Repairable r) { // -> Repairable을 구현한 객체만 가는
+	  if (r instanceof Unit) {
+	    Unit u = (Unit)r;
+	    While(u.hitPoint != u.MAX_HP) {
+	      u.hitPoint++; //Unit의 HP를 증가시킨다.
+	    }
+	  }
+	}
+	```
 
 
 
